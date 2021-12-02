@@ -70,8 +70,9 @@ char *ft_strcpy(char *dest, char *src)
 
 char *ft_itoa(int n)
 {
-    size_t amount;
-    char *result;
+    size_t	amount;
+    char	*result;
+	char	*tmp;//	
 
     amount = count_num(n);
     result = (char *)malloc(sizeof(char) * (amount + 1));
@@ -93,5 +94,8 @@ char *ft_itoa(int n)
 		n = n / 10;
 		amount--;
 	} 
+	tmp = result;//
+	free(result);//
+	result = tmp;//
     return (result);
 }

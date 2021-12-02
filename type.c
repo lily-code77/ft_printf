@@ -26,6 +26,8 @@ ssize_t put_di(int d)
     char    *str;
 
     str = ft_itoa(d);
+	if (str == NULL)
+		return (-1);
     return(write(1, str, ft_strlen(str)));
 }
 
