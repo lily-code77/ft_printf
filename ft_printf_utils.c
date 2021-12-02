@@ -1,29 +1,31 @@
 #include "ft_printf.h"
 
-size_t	ft_strlen(char *str)
+size_t ft_strlen(char *str)
 {
-	size_t	len;
+    size_t len;
 
-	len = 0;
-	while (*str++)
-		len++;
-	return (len);
+    len = 0;
+    while (str[len])
+        len ++;
+    return (len);
 }
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+size_t ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	size_t	src_len;
+    size_t i;
+	size_t src_len;
 
-	if (!src)
-		return (0);
-	src_len = ft_strlen((char *)src);
-	if (dstsize)
-	{
-		while (--dstsize && *src)
-			*(dst++) = *(src++);
-		*dst = '\0';
-	}
-	return (src_len);
+    i = 0;
+	src_len = ft_strlen(src);
+    if (dstsize == 0)
+        return (src_len);
+    while (i < dstsize - 1 && src[i])
+    {
+        dst[i] = src[i];
+        i ++;
+    }
+    dst[i] = '\0';
+    return (src_len);
 }
 
 size_t count_num(int nb)
