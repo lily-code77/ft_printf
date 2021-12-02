@@ -9,15 +9,14 @@ char	*ft_convert_base(size_t nbr, char *base)//★これだと、testerでセグ
 
     nbr_c = NULL;
 	base_num = ft_strlen(base);
+    if (nbr == 0)//
+        return ("0");//
 	i = count_num(nbr);
 	nbr_c[i --] = '\0';
 	while (nbr > 0)
 	{
 		nbr_c[i] = base[nbr % base_num];
 		nbr /= base_num;
-		i --;
-		if (i == 0)
-			break ;
 	}
 	return (nbr_c);
 }

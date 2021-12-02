@@ -16,7 +16,7 @@ ssize_t	put_p(unsigned long p);
 ssize_t	put_di(int d);
 ssize_t	put_xu(unsigned int x, char *base);
 size_t	ft_strlen(char *str);
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+size_t	ft_strlcpy(char *dst, char *src, size_t dstsize);
 size_t 	count_num(int nb);
 char	*ft_strcpy(char *dest, char *src);
 char	*ft_itoa(int n);
