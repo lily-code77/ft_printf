@@ -42,7 +42,7 @@ ssize_t	put_xu(unsigned int x, char *base)
 	char	*str;
 	int		len;
 
-	str =ft_convert_base(x, base) ;
+	str = ft_convert_base(x, base) ;
 	len = write(1, str, ft_strlen(str));
 	free(str);
 	return (len);

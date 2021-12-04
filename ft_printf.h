@@ -6,6 +6,14 @@
 # include <stdlib.h>
 # include <limits.h>
 
+typedef struct s_counter
+{
+    size_t  len;
+    size_t  i;
+    ssize_t  res_conv;
+    ssize_t  res; 
+}	t_counter;
+
 int		ft_printf(const char	*format, ...);
 ssize_t	count_char(va_list ap, char *input);
 ssize_t	conv_type(va_list ap, char input);

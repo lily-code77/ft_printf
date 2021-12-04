@@ -35,9 +35,9 @@ size_t count_num(int nb)
     counter = 0;
     if (nb == INT_MIN)
     {
-        counter ++;//「-」分
+        counter ++;
         nb = (-1) * (INT_MIN / 10);
-        counter ++;//「末尾の8」分
+        counter ++;
     }
     if (nb < 0)
     {
@@ -78,7 +78,7 @@ char *ft_itoa(int n)
     if (!result)
         return (NULL);
     if (n == 0)
-		return(ft_strcpy(result, "0"));//result[0] = '0';
+		return(ft_strcpy(result, "0"));
     if (n == INT_MIN)
         return (ft_strcpy(result, "-2147483648"));
     if (n < 0)
