@@ -1,17 +1,17 @@
 #include "ft_printf.h"
 //★戻り値の型や変数の型は要検討。現在、ssize_tやsize_tを使用しているが、本家の返り値の型がintである以上、intの方が良いのかも。
 
-char	*ft_convert_base(size_t nbr, char *base)//★これだと、testerでセグフォ。nbrにはunsined longとunsigned intの両方が考えられる。
+/* char	*ft_convert_base(size_t nbr, char *base)//★これだと、testerでセグフォ。nbrにはunsined longとunsigned intの両方が考えられる。
 {
 	size_t	base_num;
 	size_t	i;
 	char	*nbr_c;
 
     nbr_c = NULL;
-	base_num = ft_strlen(base);
+	base_num = ft_strlen(base);//見直し必要
     if (nbr == 0)
         return ("0");
-	i = count_num(nbr);
+	i = count_num(nbr);//見直し必要
 	nbr_c[i --] = '\0';
 	while (nbr > 0)
 	{
@@ -20,6 +20,35 @@ char	*ft_convert_base(size_t nbr, char *base)//★これだと、testerでセグ
         i --;
 	}
 	return (nbr_c);
+} */
+
+char	*ft_convert_base(size_t nbr, char *base)
+{
+    size_t	base_num;//何進数かを示す
+	size_t	digit;//進数変換した後の桁数
+    size_t  tmp;//桁数を数える時用。nbrの値を変化させない為にtmpにしている。
+	char	*nbr_c;//戻り値。進数変換した文字列。
+    
+    base_num = ft_strlen(base);
+    digit = 0;
+    tmp = nbr;
+    if (nbr == 0)
+        digit = 1;
+    while (tmp != 0)
+    {
+        tmp /= base_num;
+        digit ++;
+    }
+    nbr_c = (char *)malloc(sizeof(*base) * (digit + 1));
+    if (!nbr_c)
+        return (NULL);
+    nbr_c[digit] = '\0';
+    while (digit --)
+    {
+        nbr_c[digit] = base[nbr % base_num];
+        nbr /= base_num; 
+    }
+    return (nbr_c);
 }
 
 ssize_t  conv_type(va_list ap, char input)
