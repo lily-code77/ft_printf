@@ -55,8 +55,7 @@ ssize_t  count_char(va_list ap, char *input)
 {
 	t_counter	counter;
 
-    counter.len = 0;
-    counter.i = 0;
+    counter = (t_counter){0};//
     while (input[counter.i])
     {
         if (input[counter.i] == '%')
