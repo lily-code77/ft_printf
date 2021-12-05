@@ -10,13 +10,13 @@ typedef struct s_counter
 {
     size_t  len;
     size_t  i;
-    ssize_t  res_c;
+    ssize_t  res_c;//
     ssize_t  res; 
 }	t_counter;
 
 int		ft_printf(const char	*format, ...);
-ssize_t	count_char(va_list ap, char *input);
-ssize_t	conv_type(va_list ap, char input);
+int	ft_vprintf(char *input, va_list ap);
+ssize_t  conv_type(char input, va_list ap);
 char	*ft_convert_base(size_t n, char *base);
 ssize_t	put_c(int c);
 ssize_t	put_s(char *s);

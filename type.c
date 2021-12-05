@@ -14,16 +14,18 @@ ssize_t	put_s(char *s)
 
 ssize_t put_p(unsigned long p)
 {
-    char    *str;
+	char	*str;
 	ssize_t	len;
 
-    write(1, "0x", 2);
+    len = write(1, "0x", 2);
+	if (len < 0)
+		return (-1);
     str = ft_convert_base(p, "0123456789abcdef");
 	if (str == NULL)//
 		return (-1);//
-	len = write(1, str, ft_strlen(str)) + 2;
+	len += write(1, str, ft_strlen(str));
 	free(str);
-    return (len);//+2は0x分
+    return (len);
 }
 
 ssize_t put_di(int d)

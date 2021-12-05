@@ -29,7 +29,7 @@ char	*ft_convert_base(size_t nbr, char *base)//base_numと演算する時の見�
     return (nbr_c);
 }
 
-ssize_t  conv_type(va_list ap, char input)
+ssize_t  conv_type(char input, va_list ap)
 {
     if (input == 'c')
         return(put_c(va_arg(ap, int)));
@@ -51,7 +51,7 @@ ssize_t  conv_type(va_list ap, char input)
         return(0);
 }
 
-ssize_t  count_char(va_list ap, char *input)
+int	ft_vprintf(char *input, va_list ap)
 {
 	t_counter	counter;
 
@@ -63,10 +63,10 @@ ssize_t  count_char(va_list ap, char *input)
             counter.i ++;
             if (input[counter.i] == '\0')//
                 break ;//
-            counter.res_c = conv_type(ap, input[counter.i]);
+            counter.res_c = conv_type(input[counter.i], ap);//
             if (counter.res_c < 0 || counter.len + counter.res_c >= INT_MAX)//
                 return (-1);
-            counter.len += counter.res_c;
+            counter.len += counter.res_c;//
         }
         else
         {
@@ -88,7 +88,7 @@ int	ft_printf(const char *input, ...)
     if (input == NULL)
         return(-1);
     va_start(ap, input);
-    len = (int)count_char(ap, (char *)input);
+    len = ft_vprintf((char *)input, ap);
     va_end(ap);
     return(len);
 }
