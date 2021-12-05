@@ -19,6 +19,8 @@ ssize_t put_p(unsigned long p)
 
     write(1, "0x", 2);
     str = ft_convert_base(p, "0123456789abcdef");
+	if (str == NULL)//
+		return (-1);//
 	len = write(1, str, ft_strlen(str)) + 2;
 	free(str);
     return (len);//+2は0x分
@@ -42,7 +44,9 @@ ssize_t	put_xu(unsigned int x, char *base)
 	char	*str;
 	int		len;
 
-	str = ft_convert_base(x, base) ;
+	str = ft_convert_base(x, base);
+	if (str == NULL)//
+		return (-1);//
 	len = write(1, str, ft_strlen(str));
 	free(str);
 	return (len);

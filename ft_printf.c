@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-char	*ft_convert_base(size_t nbr, char *base)
+char	*ft_convert_base(size_t nbr, char *base)//base_numと演算する時の見た目の自然さ的に第一引数をsize_t型にした。
 {
     size_t	base_num;
 	size_t	digit;
@@ -62,15 +62,17 @@ ssize_t  count_char(va_list ap, char *input)
         if (input[counter.i] == '%')
         {
             counter.i ++;
+            if (input[counter.i] == '\0')//
+                break ;//
             counter.res_conv = conv_type(ap, input[counter.i]);
-            if (counter.res_conv < 0)
+            if (counter.res_conv < 0 || counter.len + counter.res_conv >= INT_MAX)//
                 return (-1);
             counter.len += counter.res_conv;
         }
         else
         {
             counter.res = write(1, &input[counter.i], 1);
-            if (counter.res < 0)
+            if (counter.res < 0 || counter.len + counter.res >= INT_MAX)//
                 return(-1);
             counter.len += counter.res;
         }
