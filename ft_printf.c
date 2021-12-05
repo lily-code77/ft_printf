@@ -51,7 +51,7 @@ ssize_t  conv_type(char input, va_list ap)
         return(0);
 }
 
-int	ft_vprintf(char *input, va_list ap)
+int	ft_vprintf(char *input, va_list ap)//
 {
 	t_counter	counter;
 
