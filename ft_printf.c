@@ -2,10 +2,10 @@
 
 char	*ft_convert_base(size_t nbr, char *base)//base_numと演算する時の見た目の自然さ的に第一引数をsize_t型にした。
 {
-    size_t	base_num;
-	size_t	digit;
+    size_t  base_num;
+    size_t	digit;
     size_t  tmp;
-	char	*nbr_c;
+    char	*nbr_c;
     
     base_num = ft_strlen(base);
     digit = 0;
@@ -63,10 +63,10 @@ ssize_t  count_char(va_list ap, char *input)
             counter.i ++;
             if (input[counter.i] == '\0')//
                 break ;//
-            counter.res_conv = conv_type(ap, input[counter.i]);
-            if (counter.res_conv < 0 || counter.len + counter.res_conv >= INT_MAX)//
+            counter.res_c = conv_type(ap, input[counter.i]);
+            if (counter.res_c < 0 || counter.len + counter.res_c >= INT_MAX)//
                 return (-1);
-            counter.len += counter.res_conv;
+            counter.len += counter.res_c;
         }
         else
         {

@@ -10,7 +10,7 @@ typedef struct s_counter
 {
     size_t  len;
     size_t  i;
-    ssize_t  res_conv;
+    ssize_t  res_c;
     ssize_t  res; 
 }	t_counter;
 
